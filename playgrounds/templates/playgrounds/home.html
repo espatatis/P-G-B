@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ground-Booking</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'playgrounds/styles.css' %}" type="text/css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'users/styles.css' %}" type="text/css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<meta charset="UTF-8">  
+</head>
+<body style="height: 100%;">
+    
+    <div id="page-container">
+        <div id="content-wrap">
+    {% if user.is_authenticated %}
+    {% if user.is_vendor %}
+    <nav class="navbar navbar-dark bg-dark" style="color: aliceblue; font-family: lora ;">
+        <h5><a href="{% url 'home' %}" style="color: aliceblue;">Home</a></h5>
+        <h5><a href="{% url 'listings' %}" style="color: aliceblue;">Listings</a></h5>
+        <h5><a href="{% url 'ven-profile' %}" style="color: aliceblue;">Profile</a></h5>
+        <h5><a href="{% url 'requests' %}" style="color: aliceblue;">Requests</a></h5>
+        <h5><a href="{% url 'bookings' %}" style="color: aliceblue;">Bookings</a></h5>
+        <!-- <h5><a href="#" style="color: aliceblue;">About Us</a></h5> -->
+        <h5><a href="{% url 'logout' %}" style="color: aliceblue;">Logout</a></h5>
+    </nav>
+    {% else %}
+    <nav class="navbar navbar-dark bg-dark" style="color: aliceblue; font-family: lora ;">
+        <h5><a href="{% url 'home' %}" style="color: aliceblue;">Home</a></h5>
+        <h5><a href="{% url 'listings' %}" style="color: aliceblue;">Listings</a></h5>
+        <h5><a href="{% url 'user-profile' %}" style="color: aliceblue;">Profile</a></h5>
+        <h5><a href="{% url 'bookings' %}" style="color: aliceblue;">Bookings</a></h5>
+        <!-- <h5><a href="#" style="color: aliceblue;">About Us</a></h5> -->
+        <h5><a href="{% url 'logout' %}" style="color: aliceblue;">Logout</a></h5>
+    </nav>
+    {% endif %}
+    {% else %}
+    <nav class="navbar navbar-dark bg-dark" style="color: aliceblue; font-family: lora ;">
+        <h5><a href="{% url 'home' %}" style="color: aliceblue;">Home</a></h5>
+        <h5><a href="{% url 'listings' %}" style="color: aliceblue;">Listings</a></h5>
+        <h5><a href="{% url 'user-login' %}" style="color: aliceblue;">Login</a></h5>
+        <h5><a href="{% url 'user-reg' %}" style="color: aliceblue;">Register</a></h5>
+        <!-- <h5><a href="#" style="color: aliceblue;">About Us</a></h5> -->
+    </nav>
+    <!-- background-image: url({{ MEDIA_URL }}main.jpeg); min-height:80vh; -->
+    {% endif %}
+<div class="container" >
+    <div style=" margin: 3%;" class="">
+        <div class="w3-content w3-section">
+            <img class="mySlides" src="{{ MEDIA_URL }}main.jpeg" alt="ground" style="opacity:1; margin-bottom: 10px; height: 400px; width: 100%;">
+            <img class="mySlides" src="{{ MEDIA_URL }}main_3.jpeg" alt="ground" style="opacity:1; margin-bottom: 10px; height: 400px; width: 100%;">
+            <img class="mySlides" src="{{ MEDIA_URL }}main_2.jpg" alt="ground" style="opacity:1; margin-bottom: 10px; height: 400px; width: 100%;">
+        </div>
+        <br><br><br>
+        <h3 style="font-weight: 700; width:100%; min-height:100%; opacity: 1;">
+            Is it a sports event or a concert ? We have got you covered for all.
+           <a style="color: royalblue;" href="{% url 'user-login' %}">Book Now </a> 
+        <br><br>
+        <h3 style="font-weight: 700;">P-G-B</h3> is a digital platform for sports enthusiasts to find and book a curated list of sports events & sports venues on The P-G-B App.
+
+        We also aim to bring people closer to their sport of choice through unique events for companies and individuals!
+        </h3>
+
+        <br><br><br><br><br>
+        <h4 style="color: rgb(4, 56, 15); font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+            If you have a sports/event ground. <a style="font-weight: 700; color: blue;" href="{ url 'ven-reg' }">Register here</a> 
+            <br>
+            Existing vendor ? <a style="font-weight: 700; color: blue;" href="{ url 'ven-login' }">Click here</a>
+        </h4>
+        <!-- <img src="{{ MEDIA_URL }}main.jpeg" alt="ground" style="opacity: 0.7; margin-bottom: 10px;"> -->
+        
+    </div>
+    <br><br>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+<div id="footer">
+    &copy; Copyright 2021 pg-booking.dev
+</div>
+</div>
+</div>
+<script>
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+    </script>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

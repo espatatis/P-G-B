@@ -1,0 +1,43 @@
+html,
+body {
+  font-family: "Lora", serif;
+  font-size: large;
+  background: solid black;
+}
+
+.card {
+  font-family: "Lora", serif;
+}
+.input:focus {
+  filter: drop-shadow(0px 0px 6px rgb(141, 141, 200));
+  border: 1px solid #c2b9b9f6;
+  background-color: solid white;
+  outline: none;
+}
+.input {
+  width: 100%;
+  border: 1px solid #c2b9b9f6;
+  border-radius: 2px;
+}
+.profile {
+  max-width: 800px;
+  border: 1px solid black;
+  background-color: solid black;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem; /* Footer height */
+}
+#footer {
+  margin-top: 80px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px; /* Footer height */
+  text-align: center;
+  background-color: grey;
+}

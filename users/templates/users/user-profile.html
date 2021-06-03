@@ -1,0 +1,67 @@
+
+{% extends "playgrounds/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div style="border: 1px solid black; margin-top: 20px; padding: 20px;">
+        <div class="">
+            <h3 style="font-weight: 700; text-decoration: underline;">Your details</h3>
+        </div>
+        <h4 style="font-weight: 700;">Name :- {{ user.name }}</h4>
+        <h4 style="font-weight: 700;">Email :- {{ user.email }}</h4>
+        <h4 style="font-weight: 700;">Phone :- {{ user.phone }}</h4>
+    </div>
+    <div>
+        <br>
+        <h3>Your Requests </h3>
+        {% for request in requests_1 %}
+        <div style="border: 1px solid black; padding: 10px;">
+            <img style=" float: right; max-width: 180px; max-height: 190px;" src="{{ request.venue.picture.url }}" alt="something">
+
+        <h5 style="display: inline; font-weight: 700;">You</h5> have requested to book 
+        <h5 style="display: inline; font-weight: 700;">{{ request.venue }}</h5> from
+        <h5 style="display: inline; font-weight: 700;">{{ request.from_date }}</h5> till 
+        <h5 style="display: inline; font-weight: 700;">{{ request.to_date }}</h5>  at  
+        <h5 style="display: inline; font-weight: 700;">₹ {{ request.venue.price }}/day</h5>
+
+        <br> Contact them at <br> 
+        <h5>+91{{ request.user.phone }}</h5>
+        <h5>+91{{ request.request_time }}</h5>
+        <br>
+        
+       
+        <a href="{% url 'req-rej' request_id=request.id %}"><button type="button" class="btn btn-outline-danger">Cancel</button></a>
+        
+    </div>
+    <br>
+        {% endfor %} 
+        {% for request in requests_2 %}
+        <div style="border: 1px solid black; padding: 10px;">
+            <img style=" float: right; max-width: 180px; max-height: 190px;" src="{{ reuest.venue.picture.url }}" alt="something">
+
+        <h5 style="display: inline; font-weight: 700;">You</h5> have requested to book 
+
+        <h5 style="display: inline; font-weight: 700;">{{ request.venue }}</h5> from
+        <h5 style="display: inline; font-weight: 700;">{{ request.from_date }}</h5> till 
+        <h5 style="display: inline; font-weight: 700;">{{ request.to_date }}</h5>  at  
+        <h5 style="display: inline; font-weight: 700;">₹ {{ request.venue.price }}/day</h5>
+
+        <br> Contact them at <br> 
+        <h5>+91{{ request.venue.contact }}</h5>
+        <h5>Requested at - {{ request.request_time }}</h5>
+        
+        
+        
+       
+       
+        
+    </div>
+    <br>
+        {% endfor %} 
+
+        </div>
+       
+    
+    {% else %}
+    <h4>Login -</h4>
+    {% endif %}
+{% endblock %}

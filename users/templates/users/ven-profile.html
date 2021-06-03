@@ -1,0 +1,41 @@
+
+{% extends "playgrounds/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div style="border: 1px solid black; margin-top: 20px; padding: 20px;">
+        <div class="">
+            <h3 style="font-weight: 700; text-decoration: underline;">Your details</h3>
+        </div>
+        <h4 style="font-weight: 700;">Name :- {{ user.name }}</h4>
+        <h4 style="font-weight: 700;">Email :- {{ user.email }}</h4>
+        <h4 style="font-weight: 700;">Phone :- {{ user.phone }}</h4>
+    </div>
+    <div>
+        <br>
+        <h3> All Venues</h3>
+        {% for venue in venues %}
+        <a href="{% url 'detail' venue_id=venue.id %}" style="color: black; text-decoration: none;">
+            <div style="border: 1px solid black; padding: 10px;">
+                <img src="{{ venue.picture.url }}" alt="{{ venue.venue_name }} image" style="width: 500px;">
+                <br><br>
+            <h5 style="display: inline; font-weight: 700;">{{ venue.venue_name }}</h5> 
+            {% if venue.status %}
+            <h5 style="display: inline; font-weight: 700; color: solid red;">Booked</h5>
+            {% else %}
+            <h5 style="display: inline; font-weight: 700; color: solid red;">Available</h5>
+            {% endif %}    
+            <h5 style="display: inline; font-weight: 700;">₹ {{ venue.price }}/day</h5>
+            <br> Phone <br> 
+            <h5>+91{{ venue.contact }}</h5>
+    
+        </div>
+        <br>
+
+        </a>
+        {% endfor %} 
+        </div>
+        <a href="{% url 'add' %}"><button  type="button" class="btn btn-outline-dark">Add a venue</button></a>
+    {% else %}
+    <h4>Login -</h4>
+    {% endif %}
+{% endblock %}

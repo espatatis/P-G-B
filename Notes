@@ -1,0 +1,16 @@
+Once inside this directory on your terminal follow these steps - 
+--> Create a virtual env (Optional)
+--> pip install -r requirements.txt
+--> python manage.py makemigrations
+--> python manage.py migrate
+--> python manage.py runserver
+
+If everything is working fine then -
+
+--> python manage.py createsuperuser 
+
+(Register with the credentials as a admin user)
+
+GOOD TO GO !
+
+Add different users (vendors and normal users) and check add grounds and check other funcitonalities.

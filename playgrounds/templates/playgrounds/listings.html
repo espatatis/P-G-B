@@ -1,0 +1,23 @@
+{% extends "playgrounds/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    {% for venue in listings %}
+
+    <div style="margin-top: 10%; padding: 2px; font-size: 11px; min-width: 200px;  height: 350px; filter: drop-shadow(0 0 25px #333); background-color: rgb(255, 255, 255); border-radius: 5px; border: 0px;">
+        <img style="margin: 10px; height: 320px; width: 400px; margin-top: 15px; border-radius: 1px; border: 1px solid black; float: left;" src="{{ venue.picture.url }}" alt="Generic placeholder image" width="140" height="140">
+        <div style="float: left; margin: 3%;">
+            <!-- <br> -->
+            <h2 style="font-family: Lora, sans; font-weight: 600;"><a style="color:  black; text-decoration: none; margin-top: 20px;" href="{% url 'detail' venue_id=venue.id %}">{{ venue.venue_name | truncatechars:30}}</a></h2>
+            <h5 style="font-family: Lora, sans;">₹{{ venue.price }} per day</h5>
+            <h5 style="font-weight: 700;">City - <small>{{ venue.city  | truncatechars:30 }}</small></h5>
+
+            <h5 style="font-weight: 700;">Description - <small>{{ venue.desc  | truncatechars:50 }}</small></h5>
+            <h5 style="font-weight: 700;">Capacity - <small>{{ venue.capacity  | truncatechars:30 }} people</small></h5>
+            <h5 style="font-weight: 700;">Size (in sq m) - <small>{{ venue.size  | truncatechars:30 }}</small></h5>
+        </div>
+    </div>
+
+    {% endfor %} 
+
+{% endblock %}

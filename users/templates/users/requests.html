@@ -1,0 +1,25 @@
+{% extends "playgrounds/base.html" %}
+{% block content %}
+<div>
+    <br>
+    <h3> All Requests</h3>
+    {% for request in requests %}
+    <div style="border: 1px solid black; padding: 10px;">
+    <h5 style="display: inline; font-weight: 700;">{{ request.user.name }}</h5> has requested to book 
+    <h5 style="display: inline; font-weight: 700;">{{ request.venue }}</h5> from
+    <h5 style="display: inline; font-weight: 700;">{{ request.from_date }}</h5> till 
+    <h5 style="display: inline; font-weight: 700;">{{ request.to_date }}</h5>  at  
+    <h5 style="display: inline; font-weight: 700;">₹ {{ request.venue.price }}/day</h5>
+    <br> Contact them at <br> 
+    <h5>+91{{ request.user.phone }}</h5>
+    <br>
+    
+
+    <a href="{% url 'req-acc' request_id=request.id %}"><button type="button" class="btn btn-outline-success">Accept</button></a>
+    <a href="{% url 'req-rej' request_id=request.id %}"><button type="button" class="btn btn-outline-danger">Reject</button></a>
+</div>
+<br>
+    {% endfor %} 
+    </div>
+    
+{% endblock %}

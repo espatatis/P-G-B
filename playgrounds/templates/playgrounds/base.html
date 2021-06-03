@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ground-Booking</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'playgrounds/styles.css' %}" type="text/css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'users/styles.css' %}" type="text/css">
+<meta charset="UTF-8">  
+</head>
+<body>
+    <div id="page-container">
+        <div id="content-wrap">
+    {% if user.is_authenticated %}
+    {% if user.is_vendor %}
+    <nav class="navbar navbar-dark bg-dark" style="color: aliceblue; font-family: lora ;">
+        <h5><a href="{% url 'home' %}" style="color: aliceblue;">Home</a></h5>
+        <h5><a href="{% url 'listings' %}" style="color: aliceblue;">Listings</a></h5>
+        <h5><a href="{% url 'ven-profile' %}" style="color: aliceblue;">Profile</a></h5>
+        <h5><a href="{% url 'requests' %}" style="color: aliceblue;">Requests</a></h5>
+        <h5><a href="{% url 'bookings' %}" style="color: aliceblue;">Bookings</a></h5>
+        <!-- <h5><a href="#" style="color: aliceblue;">About Us</a></h5> -->
+        <h5><a href="{% url 'logout' %}" style="color: aliceblue;">Logout</a></h5>
+    </nav>
+    {% else %}
+    <nav class="navbar navbar-dark bg-dark" style="color: aliceblue; font-family: lora ;">
+        <h5><a href="{% url 'home' %}" style="color: aliceblue;">Home</a></h5>
+        <h5><a href="{% url 'listings' %}" style="color: aliceblue;">Listings</a></h5>
+        <h5><a href="{% url 'user-profile' %}" style="color: aliceblue;">Profile</a></h5>
+        <h5><a href="{% url 'bookings' %}" style="color: aliceblue;">Bookings</a></h5>
+        <!-- <h5><a href="#" style="color: aliceblue;">About Us</a></h5> -->
+        <h5><a href="{% url 'logout' %}" style="color: aliceblue;">Logout</a></h5>
+    </nav>
+    {% endif %}
+    {% else %}
+    <nav class="navbar navbar-dark bg-dark" style="color: aliceblue; font-family: lora ;">
+        <h5><a href="{% url 'home' %}" style="color: aliceblue;">Home</a></h5>
+        <h5><a href="{% url 'listings' %}" style="color: aliceblue;">Listings</a></h5>
+        <h5><a href="{% url 'user-login' %}" style="color: aliceblue;">Login</a></h5>
+        <h5><a href="{% url 'user-reg' %}" style="color: aliceblue;">Register</a></h5>
+        <!-- <h5><a href="#" style="color: aliceblue;">About Us</a></h5> -->
+    </nav>
+    {% endif %}
+<div class="container" >
+    {% block content %}
+    {% endblock %}
+    <br><br>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+<div id="footer">
+    &copy; Copyright 2021 pg-booking.dev
+</div>
+</div>
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

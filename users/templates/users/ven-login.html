@@ -1,0 +1,20 @@
+{% extends "playgrounds/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex justify-content-center" style="margin-top: 20%;">
+    <div class="card" style="width: 400px; justify-content: center; filter: drop-shadow(0px 0px 40px  grey);">
+        <div class="card-body">
+            <h4 class="card-title" style="text-align: center; border-bottom: 1px solid grey; padding-bottom: 10px;">Login as a vendor</h4>
+<form method="post" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <!-- <input type="hidden" name="next" value="{{ next }}"> -->
+    <br>
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
+    <small class="text-muted">Don't have an account ? <a href="{% url 'ven-reg' %}">Sign Up</a></small>
+</form>
+</div>
+</div>
+</div>
+
+{% endblock %}

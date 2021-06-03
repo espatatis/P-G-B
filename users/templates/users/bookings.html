@@ -1,0 +1,40 @@
+{% extends "playgrounds/base.html" %}
+{% block content %}
+<br>
+<h3>
+    All Bookings
+</h3>
+<div>
+    {% if user.is_vendor %}
+    {% for booking in v_bookings %}
+    <div style="border: 1px solid black; padding: 10px;">
+        <h5 style="font-weight: 700; display: inline;">Booked by - {{ booking.user }}</h5>
+    <h5 style="display: inline;">Venue - <h5 style="font-weight: 700; display: inline;">{{ booking.playground }}</h5></h5>
+        
+        <img style=" float: right; max-width: 205px; max-height: 190px;" src="{{ booking.playground.picture.url }}" alt="something">
+    
+    
+    <h5>From - {{ booking.from_date }}</h5>
+    <h5>To - {{ booking.to_date }}</h5>
+    <h5>Booking time - {{ booking.booking_time }}</h5>
+    </div>
+    <br>
+    {% endfor %} 
+    {% else %}
+    {% for booking in u_bookings %}
+    <div style="border: 1px solid black; padding: 10px;">
+    <h5 style="display: inline;">Venue - <h5 style="font-weight: 700; display: inline;">{{ booking.playground }}</h5></h5>
+        
+        <img style=" float: right; max-width: 205px; max-height: 190px;" src="{{ booking.playground.picture.url }}" alt="something">
+    
+    
+    <h5>From - {{ booking.from_date }}</h5>
+    <h5>To - {{ booking.to_date }}</h5>
+    <h5>Booking time - {{ booking.booking_time }}</h5>
+    </div>
+    <br>
+    {% endfor %} 
+    {% endif %}
+
+</div>
+{% endblock %}
